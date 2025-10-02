@@ -6,13 +6,15 @@ Portfolio dronowe ma 3 różne wersje kolorystyczne. Każda na osobnym branchu!
 **Branch:** `wow-variation`
 
 ### Cechy:
-- 🔴 **Czerwone "O"** w "Droning" z pulsującymi animacjami 3D
+- ⭕ **Okrągłe "O"** w "Droning" z pulsującą animacją + rotacja 360°
+- 📱 **Ikonki social media** (FB, IG, TikTok) na hero sekcji z animacjami
 - 🌈 Gradient **czerwono-cyjanowy** (#ff0066 → #00d4ff)
 - ✨ Świecące efekty i cienie na wszystkich elementach
 - 🎯 Dynamiczne karty z kolorowymi gradientowymi borderami
 - 💫 Animowany przycisk CTA z efektem ripple
 - 🎪 Navbar z gradientowym borderem
 - 🎨 Intensywne kolory i efekty WOW
+- 💎 Białe, czytelne teksty na kartach
 
 **Idealny dla:** Odważnych projektów, portfolio artystyczne, maksymalny efekt WOW!
 

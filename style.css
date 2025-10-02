@@ -73,37 +73,26 @@ body {
 .red-o {
     font-weight: 900;
     display: inline-block;
-    font-size: 1.2em;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 102, 0.8)) 
-            drop-shadow(0 0 30px rgba(255, 0, 102, 0.5))
-            drop-shadow(0 0 45px rgba(0, 212, 255, 0.3));
-    animation: drone-fly 4s ease-in-out infinite;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px rgba(255, 0, 102, 0.9), 
+                 0 0 40px rgba(255, 0, 102, 0.6),
+                 0 0 60px rgba(0, 212, 255, 0.4);
+    animation: circle-spin 4s ease-in-out infinite;
 }
 
-@keyframes drone-fly {
+@keyframes circle-spin {
     0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-        filter: drop-shadow(0 0 15px rgba(255, 0, 102, 0.8)) 
-                drop-shadow(0 0 30px rgba(255, 0, 102, 0.5))
-                drop-shadow(0 0 45px rgba(0, 212, 255, 0.3));
-    }
-    25% {
-        transform: translateY(-10px) translateX(5px) rotate(5deg);
-        filter: drop-shadow(0 0 20px rgba(255, 0, 102, 1)) 
-                drop-shadow(0 0 40px rgba(255, 0, 102, 0.7))
-                drop-shadow(0 0 60px rgba(0, 212, 255, 0.5));
+        transform: scale(1) rotate(0deg);
+        text-shadow: 0 0 20px rgba(255, 0, 102, 0.9), 
+                     0 0 40px rgba(255, 0, 102, 0.6),
+                     0 0 60px rgba(0, 212, 255, 0.4);
     }
     50% {
-        transform: translateY(-15px) translateX(0px) rotate(0deg);
-        filter: drop-shadow(0 0 25px rgba(255, 0, 102, 1)) 
-                drop-shadow(0 0 50px rgba(255, 0, 102, 0.8))
-                drop-shadow(0 0 75px rgba(0, 212, 255, 0.6));
-    }
-    75% {
-        transform: translateY(-10px) translateX(-5px) rotate(-5deg);
-        filter: drop-shadow(0 0 20px rgba(255, 0, 102, 1)) 
-                drop-shadow(0 0 40px rgba(255, 0, 102, 0.7))
-                drop-shadow(0 0 60px rgba(0, 212, 255, 0.5));
+        transform: scale(1.15) rotate(180deg);
+        text-shadow: 0 0 30px rgba(255, 0, 102, 1), 
+                     0 0 60px rgba(255, 0, 102, 0.8),
+                     0 0 90px rgba(0, 212, 255, 0.6);
     }
 }
 
@@ -247,29 +236,31 @@ body {
 .title-o {
     font-weight: 900;
     display: inline-block;
-    font-size: 1.3em;
-    filter: drop-shadow(0 0 30px rgba(255, 0, 102, 1)) 
-            drop-shadow(0 0 60px rgba(255, 0, 102, 0.8))
-            drop-shadow(0 0 90px rgba(0, 212, 255, 0.6));
-    animation: drone-fly-hero 5s ease-in-out infinite;
+    font-size: 1.4em;
+    color: var(--primary-color);
+    text-shadow: 0 0 30px rgba(255, 0, 102, 1), 
+                 0 0 60px rgba(255, 0, 102, 0.8),
+                 0 0 90px rgba(0, 212, 255, 0.6),
+                 0 0 120px rgba(255, 0, 102, 0.4);
+    animation: circle-pulse 3s ease-in-out infinite;
     transform-style: preserve-3d;
     position: relative;
 }
 
-.title-o::after {
-    content: '💨';
-    position: absolute;
-    right: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.3;
-    font-size: 0.6em;
-    animation: trail-fade 1s ease-in-out infinite;
-}
-
-@keyframes trail-fade {
-    0%, 100% { opacity: 0.1; transform: translateY(-50%) translateX(0px); }
-    50% { opacity: 0.4; transform: translateY(-50%) translateX(-5px); }
+@keyframes circle-pulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        text-shadow: 0 0 30px rgba(255, 0, 102, 1), 
+                     0 0 60px rgba(255, 0, 102, 0.8),
+                     0 0 90px rgba(0, 212, 255, 0.6);
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        text-shadow: 0 0 50px rgba(255, 0, 102, 1), 
+                     0 0 100px rgba(255, 0, 102, 1),
+                     0 0 150px rgba(0, 212, 255, 0.8),
+                     0 0 200px rgba(255, 0, 102, 0.6);
+    }
 }
 
 @keyframes drone-fly-hero {
@@ -320,6 +311,75 @@ body {
     font-size: 1.5rem;
     color: var(--gray-text);
     margin-bottom: 2rem;
+}
+
+.hero-social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+    animation: fadeInUp 1.5s ease-out 0.5s backwards;
+}
+
+.hero-social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(15, 20, 40, 0.6);
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-social-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-2);
+    opacity: 0;
+    transition: opacity 0.4s;
+    border-radius: 50%;
+}
+
+.hero-social-link svg {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s;
+}
+
+.hero-social-link:hover {
+    transform: translateY(-10px) scale(1.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(255, 0, 102, 0.5),
+                0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.hero-social-link:hover::before {
+    opacity: 0.2;
+}
+
+.hero-social-link:hover svg {
+    transform: scale(1.2) rotate(360deg);
+    color: #ffffff;
+}
+
+.hero-social-link:nth-child(1):hover {
+    box-shadow: 0 15px 40px rgba(66, 103, 178, 0.6);
+}
+
+.hero-social-link:nth-child(2):hover {
+    box-shadow: 0 15px 40px rgba(225, 48, 108, 0.6);
+}
+
+.hero-social-link:nth-child(3):hover {
+    box-shadow: 0 15px 40px rgba(255, 0, 102, 0.6);
 }
 
 .cta-button {
@@ -842,6 +902,15 @@ body {
         font-size: 1.2rem;
     }
 
+    .hero-social {
+        gap: 1rem;
+    }
+
+    .hero-social-link {
+        width: 45px;
+        height: 45px;
+    }
+
     .section-title {
         font-size: 2rem;
     }
@@ -869,6 +938,20 @@ body {
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
+    }
+
+    .hero-social {
+        gap: 0.8rem;
+    }
+
+    .hero-social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-social-link svg {
+        width: 20px;
+        height: 20px;
     }
 
     .cta-button {

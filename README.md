@@ -4,15 +4,15 @@ Profesjonalne portfolio dronowe z możliwością dodawania filmów z YouTube ora
 
 ## 🔥 WOW Edition - Co nowego?
 
-✨ **Latający dron 🚁** zamiast "O" w "Droning" z animacją lotu 3D!
+✨ **Okrągłe "O" ⭕** zamiast "O" w "Droning" z pulsującą animacją + rotacją 360°!
 ✨ Gradient czerwono-cyjanowy na całej stronie
 ✨ Dynamiczne świecące efekty i cienie
+✨ **Ikonki social media** (Facebook, Instagram, TikTok) na stronie głównej!
 ✨ Interaktywne karty wideo z kolorowymi borderami
 ✨ **Białe, czytelne napisy** na wszystkich kartach
 ✨ Animowany przycisk CTA z efektem ripple
-✨ Efekty hover na wszystkich elementach
+✨ Efekty hover na wszystkich elementach (360° obrót ikon!)
 ✨ Gradient navbar z kolorowym borderem
-✨ Efekt dymu/śladu za dronem 💨
 ✨ Backdrop blur na kartach dla lepszego kontrastu
 
 ## Funkcje
