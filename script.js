@@ -201,190 +201,202 @@ window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
 
-// Particles Animation
-const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
-
-// Set canvas size
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-// Particle class
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = Math.random() > 0.5 ? 'rgba(255, 0, 102, 0.6)' : 'rgba(0, 212, 255, 0.6)';
+// Particles Animation - wait for DOM to load
+window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) {
+        console.error('Canvas not found!');
+        return;
     }
+    const ctx = canvas.getContext('2d');
 
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Wrap around screen
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Glow effect
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = this.color;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-    }
-}
-
-// Create particles
-const particlesArray = [];
-const numberOfParticles = 80;
-
-for (let i = 0; i < numberOfParticles; i++) {
-    particlesArray.push(new Particle());
-}
-
-// Mouse interaction
-let mouse = {
-    x: null,
-    y: null,
-    radius: 100
-};
-
-canvas.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
-});
-
-canvas.addEventListener('mouseleave', () => {
-    mouse.x = null;
-    mouse.y = null;
-});
-
-// Connect particles
-function connectParticles() {
-    for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-            const dx = particlesArray[a].x - particlesArray[b].x;
-            const dy = particlesArray[a].y - particlesArray[b].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 120) {
-                const opacity = 1 - (distance / 120);
-                ctx.strokeStyle = `rgba(255, 0, 102, ${opacity * 0.3})`;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                ctx.stroke();
-            }
+    // Particle class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
+            this.color = Math.random() > 0.5 ? 'rgba(255, 0, 102, 0.6)' : 'rgba(0, 212, 255, 0.6)';
         }
-    }
-}
 
-// Mouse attraction
-function handleParticles() {
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
 
-        // Mouse interaction - particles move away from cursor
-        if (mouse.x != null && mouse.y != null) {
-            const dx = particlesArray[i].x - mouse.x;
-            const dy = particlesArray[i].y - mouse.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < mouse.radius) {
-                const forceDirectionX = dx / distance;
-                const forceDirectionY = dy / distance;
-                const force = (mouse.radius - distance) / mouse.radius;
-                const directionX = forceDirectionX * force * 3;
-                const directionY = forceDirectionY * force * 3;
-
-                particlesArray[i].x += directionX;
-                particlesArray[i].y += directionY;
-            }
+            // Wrap around screen
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
         }
-    }
-}
 
-// Animation loop
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleParticles();
-    connectParticles();
-    requestAnimationFrame(animateParticles);
-}
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
 
-animateParticles();
-
-// Parallax Scrolling Effect
-let lastScrollY = window.scrollY;
-
-function parallaxEffect() {
-    const scrolled = window.scrollY;
-    
-    // Hero section parallax
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const heroContent = document.querySelector('.hero-content');
-        const heroOverlay = document.querySelector('.hero-overlay');
-        
-        if (heroContent) {
-            heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
-        
-        if (heroOverlay) {
-            heroOverlay.style.transform = `translateY(${scrolled * 0.5}px)`;
+            // Glow effect
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = this.color;
+            ctx.fill();
+            ctx.shadowBlur = 0;
         }
     }
 
-    // Portfolio cards parallax
-    const videoCards = document.querySelectorAll('.video-card');
-    videoCards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-        
-        if (scrollPercent > 0 && scrollPercent < 1) {
-            const offset = (index % 2 === 0) ? -20 : 20;
-            card.style.transform = `translateY(${offset * (1 - scrollPercent)}px)`;
-        }
+    // Create particles
+    const particlesArray = [];
+    const numberOfParticles = 80;
+
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+    }
+
+    // Mouse interaction
+    let mouse = {
+        x: null,
+        y: null,
+        radius: 100
+    };
+
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
     });
 
-    // About section parallax
-    const aboutImage = document.querySelector('.image-frame');
-    if (aboutImage) {
-        const rect = aboutImage.getBoundingClientRect();
-        const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-        
-        if (scrollPercent > 0 && scrollPercent < 1) {
-            aboutImage.style.transform = `translateY(${-30 * scrollPercent}px) rotate(${360 + scrollPercent * 360}deg)`;
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    // Connect particles
+    function connectParticles() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                const dx = particlesArray[a].x - particlesArray[b].x;
+                const dy = particlesArray[a].y - particlesArray[b].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 120) {
+                    const opacity = 1 - (distance / 120);
+                    ctx.strokeStyle = `rgba(255, 0, 102, ${opacity * 0.3})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
         }
     }
 
-    lastScrollY = scrolled;
-}
+    // Mouse attraction
+    function handleParticles() {
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
 
-// Smooth parallax on scroll
-window.addEventListener('scroll', () => {
-    requestAnimationFrame(parallaxEffect);
+            // Mouse interaction - particles move away from cursor
+            if (mouse.x != null && mouse.y != null) {
+                const dx = particlesArray[i].x - mouse.x;
+                const dy = particlesArray[i].y - mouse.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const directionX = forceDirectionX * force * 3;
+                    const directionY = forceDirectionY * force * 3;
+
+                    particlesArray[i].x += directionX;
+                    particlesArray[i].y += directionY;
+                }
+            }
+        }
+    }
+
+    // Animation loop
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        handleParticles();
+        connectParticles();
+        requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    console.log('Particles animation started! 🌟');
+}); // End of DOMContentLoaded for particles
+
+// Parallax Scrolling Effect - wait for DOM
+window.addEventListener('DOMContentLoaded', () => {
+    let lastScrollY = window.scrollY;
+
+    function parallaxEffect() {
+        const scrolled = window.scrollY;
+        
+        // Hero section parallax
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            const heroContent = document.querySelector('.hero-content');
+            const heroOverlay = document.querySelector('.hero-overlay');
+            
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+            
+            if (heroOverlay) {
+                heroOverlay.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        }
+
+        // Portfolio cards parallax
+        const videoCards = document.querySelectorAll('.video-card');
+        videoCards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+            
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                const offset = (index % 2 === 0) ? -20 : 20;
+                card.style.transform = `translateY(${offset * (1 - scrollPercent)}px)`;
+            }
+        });
+
+        // About section parallax
+        const aboutImage = document.querySelector('.image-frame');
+        if (aboutImage) {
+            const rect = aboutImage.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+            
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                aboutImage.style.transform = `translateY(${-30 * scrollPercent}px) rotate(${360 + scrollPercent * 360}deg)`;
+            }
+        }
+
+        lastScrollY = scrolled;
+    }
+
+    // Smooth parallax on scroll
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(parallaxEffect);
+    });
+
+    // Initial parallax
+    parallaxEffect();
+    
+    console.log('Parallax scrolling activated! 🎯');
 });
-
-// Initial parallax
-parallaxEffect();
 
 console.log('Keep Droning Portfolio - Loaded successfully! 🚁✨');
 console.log('Particles & Parallax effects active! 🌟');
