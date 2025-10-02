@@ -82,25 +82,25 @@ body {
 
 @keyframes drone-fly-small {
     0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
+        transform: translateY(0px) translateX(0px);
         filter: drop-shadow(0 0 15px rgba(255, 0, 102, 0.8)) 
                 drop-shadow(0 0 30px rgba(255, 0, 102, 0.5))
                 drop-shadow(0 0 45px rgba(0, 212, 255, 0.3));
     }
     25% {
-        transform: translateY(-8px) translateX(4px) rotate(3deg);
+        transform: translateY(-3px) translateX(2px);
         filter: drop-shadow(0 0 20px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 40px rgba(255, 0, 102, 0.7))
                 drop-shadow(0 0 60px rgba(0, 212, 255, 0.5));
     }
     50% {
-        transform: translateY(-12px) translateX(0px) rotate(0deg);
+        transform: translateY(-5px) translateX(0px);
         filter: drop-shadow(0 0 25px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 50px rgba(255, 0, 102, 0.8))
                 drop-shadow(0 0 75px rgba(0, 212, 255, 0.6));
     }
     75% {
-        transform: translateY(-8px) translateX(-4px) rotate(-3deg);
+        transform: translateY(-3px) translateX(-2px);
         filter: drop-shadow(0 0 20px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 40px rgba(255, 0, 102, 0.7))
                 drop-shadow(0 0 60px rgba(0, 212, 255, 0.5));
@@ -274,37 +274,25 @@ body {
 
 @keyframes drone-fly-hero {
     0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+        transform: translateY(0px) translateX(0px) scale(1);
         filter: drop-shadow(0 0 30px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 60px rgba(255, 0, 102, 0.8))
                 drop-shadow(0 0 90px rgba(0, 212, 255, 0.6));
     }
-    15% {
-        transform: translateY(-20px) translateX(15px) rotate(8deg) scale(1.1);
+    25% {
+        transform: translateY(-8px) translateX(6px) scale(1.05);
         filter: drop-shadow(0 0 40px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 80px rgba(255, 0, 102, 0.9))
                 drop-shadow(0 0 120px rgba(0, 212, 255, 0.7));
     }
-    35% {
-        transform: translateY(-30px) translateX(-10px) rotate(-5deg) scale(1.15);
-        filter: drop-shadow(0 0 50px rgba(255, 0, 102, 1)) 
-                drop-shadow(0 0 100px rgba(255, 0, 102, 1))
-                drop-shadow(0 0 150px rgba(0, 212, 255, 0.8));
-    }
     50% {
-        transform: translateY(-25px) translateX(0px) rotate(0deg) scale(1.2);
-        filter: drop-shadow(0 0 60px rgba(255, 0, 102, 1)) 
-                drop-shadow(0 0 120px rgba(255, 0, 102, 1))
-                drop-shadow(0 0 180px rgba(0, 212, 255, 0.9));
-    }
-    65% {
-        transform: translateY(-30px) translateX(10px) rotate(5deg) scale(1.15);
+        transform: translateY(-12px) translateX(0px) scale(1.08);
         filter: drop-shadow(0 0 50px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 100px rgba(255, 0, 102, 1))
                 drop-shadow(0 0 150px rgba(0, 212, 255, 0.8));
     }
-    85% {
-        transform: translateY(-20px) translateX(-15px) rotate(-8deg) scale(1.1);
+    75% {
+        transform: translateY(-8px) translateX(-6px) scale(1.05);
         filter: drop-shadow(0 0 40px rgba(255, 0, 102, 1)) 
                 drop-shadow(0 0 80px rgba(255, 0, 102, 0.9))
                 drop-shadow(0 0 120px rgba(0, 212, 255, 0.7));
