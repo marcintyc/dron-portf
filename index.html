@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Droning - Portfolio Dronowe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🚁</span>
+                <span class="logo-text">Keep Droning</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Start</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#about" class="nav-link">O mnie</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-subtitle">Witaj w</span>
+                Keep Droning
+            </h1>
+            <p class="hero-description">Profesjonalna fotografia i filmowanie dronem</p>
+            <a href="#portfolio" class="cta-button">
+                Zobacz moje prace
+                <span class="arrow">→</span>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-line"></span>
+                Moje Portfolio
+                <span class="title-line"></span>
+            </h2>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Wszystkie</button>
+                <button class="filter-btn" data-filter="youtube">YouTube</button>
+                <button class="filter-btn" data-filter="local">Wideo lokalne</button>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="video-grid" id="videoGrid">
+                <!-- YouTube Video 1 -->
+                <div class="video-card" data-category="youtube">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Lot nad górami</h3>
+                        <p class="video-description">Zapierające dech widoki górskie z lotu ptaka</p>
+                    </div>
+                </div>
+
+                <!-- YouTube Video 2 -->
+                <div class="video-card" data-category="youtube">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Zachód słońca nad morzem</h3>
+                        <p class="video-description">Magiczne kolory nieba podczas złotej godziny</p>
+                    </div>
+                </div>
+
+                <!-- Local Video 1 -->
+                <div class="video-card" data-category="local">
+                    <div class="video-wrapper">
+                        <video controls poster="placeholder.jpg">
+                            <source src="videos/drone-video-1.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Lot nad miastem</h3>
+                        <p class="video-description">Panorama miasta w nocy</p>
+                    </div>
+                </div>
+
+                <!-- YouTube Video 3 -->
+                <div class="video-card" data-category="youtube">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Las z lotu ptaka</h3>
+                        <p class="video-description">Zielone korony drzew widziane z góry</p>
+                    </div>
+                </div>
+
+                <!-- Local Video 2 -->
+                <div class="video-card" data-category="local">
+                    <div class="video-wrapper">
+                        <video controls poster="placeholder.jpg">
+                            <source src="videos/drone-video-2.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Jezioro o świcie</h3>
+                        <p class="video-description">Spokojne wody jeziora w porannej mgle</p>
+                    </div>
+                </div>
+
+                <!-- YouTube Video 4 -->
+                <div class="video-card" data-category="youtube">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Impreza eventowa</h3>
+                        <p class="video-description">Profesjonalne nagranie z wydarzenia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="drone-icon">🚁</div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">O mnie</h2>
+                    <p>Pasjonat lotnictwa i fotografii z wieloletnim doświadczeniem w pilotażu dronów. Specjalizuję się w profesjonalnej fotografii i filmowaniu z powietrza dla firm, eventów i projektów prywatnych.</p>
+                    <p>Wykorzystuję najnowocześniejszy sprzęt i techniki montażu, aby tworzyć unikalne, zapierające dech w piersiach materiały.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Godzin lotu</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Projektów</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Zadowolonych klientów</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Skontaktuj się</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>kontakt@keepdroning.pl</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>+48 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Lokalizacja</h3>
+                            <p>Polska</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Twoje imię" required>
+                    <input type="email" placeholder="Twój email" required>
+                    <textarea placeholder="Wiadomość" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">🚁</span>
+                    <span class="logo-text">Keep Droning</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">YouTube</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Facebook</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Keep Droning. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
